@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr" data-startbar="light" data-bs-theme="light">
+<html lang="en" dir="ltr" data-startbar="" data-bs-theme="dark">
 
 <head>
 
@@ -12,7 +12,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
     <!-- App favicon -->
-    <link rel="shortcut icon" href="assets/images/favicon.ico">
+    <link rel="shortcut icon" href="assets/images/favicon.svg">
 
     {{-- Datatables css --}}
     <link href="{{ asset('assets/libs/simple-datatables/style.css') }}" rel="stylesheet" type="text/css" />

@@ -21,10 +21,10 @@ class ResellerController extends Controller
         if ($userRole == 5) { // sales
             // jika sales tampilkan data reseller sesuai area dan kode upline nya
             $resellers = $resellers->where('r1.kode_upline', $kodeReseller);
-            // jika selles tamankan data reseller sesuai area dan kode upline nya
-        }else if($userRole == 4) {
+            // jika selles tampilkan data reseller sesuai area dan kode upline nya
+        } else if ($userRole == 4) {
 
-            $resellers = $resellers->where('r1.kode_upline', 'ADMINJKT'); // perlu dibahas management
+            $resellers = $resellers->where('r1.kode_upline', $kodeReseller); // perlu dibahas management
         }
 
         // jika adminsistrator, manager all, finance, tampilkan data semua reseller
@@ -33,9 +33,20 @@ class ResellerController extends Controller
         return view('reseller.index', compact('resellers'));
     }
 
+    public function showDownline($kode)
+    {
+        $resellers = Reseller::getReseller()
+            ->where('r1.kode_upline', $kode)
+            ->orderBy('r1.nama')
+            ->get();
+
+        return view('reseller.show', compact('resellers', 'kode'));
+    }
+
+
     private function getRoleUserLogin()
     {
-         $userRole = DB::table('user_roles as a')->select('a.role_id')->join('roles as b', 'a.role_id', '=', 'b.id')->where('user_id', Auth::user()->id)->first();
-         return $userRole->role_id ?? null;
+        $userRole = DB::table('user_roles as a')->select('a.role_id')->join('roles as b', 'a.role_id', '=', 'b.id')->where('user_id', Auth::user()->id)->first();
+        return $userRole->role_id ?? null;
     }
 }

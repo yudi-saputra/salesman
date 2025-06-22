@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\ResellerController;
 
 /*
@@ -30,6 +31,12 @@ Route::middleware('auth')->group(function () {
     })->name('dashboard');
 
 Route::get('reseller', [ResellerController::class, 'showResellers'])->name('reseller.index');
+Route::get('reseller/downline/{kode}', [ResellerController::class, 'showDownline'])->name('reseller.show');
+
+Route::get('/invoice', [InvoiceController::class, 'showInvoice'])->name('invoice.index');
+
+
+
 
 
 });

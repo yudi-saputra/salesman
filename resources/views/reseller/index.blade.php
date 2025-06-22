@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Downlines')
+@section('title', 'Reseller')
 
 @section('navbar')
     @include('navbar')
@@ -26,6 +26,101 @@
                 </div><!--end page-title-box-->
             </div><!--end col-->
         </div><!--end row-->
+
+        <div class="row g-3">
+
+            <div class="col-md-4 col-lg-2">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center">
+                            <i class="iconoir-cart fs-24 align-self-center text-info me-2"></i>
+                            <div class="flex-grow-1 text-truncate">
+                                <p class="text-dark mb-0 fw-semibold fs-13">Total Trx Sukses</p>
+                                <h3 class="mt-1 mb-0 fs-18 fw-bold">$27,215k <span class="fs-11 text-muted fw-normal">New
+                                        365 Days</span> </h3>
+                            </div><!--end media body-->
+                        </div>
+                    </div><!--end card-body-->
+                </div> <!--end card-body-->
+            </div><!--end col-->
+
+            <div class="col-md-4 col-lg-2">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center">
+                            <i class="iconoir-cart fs-24 align-self-center text-danger me-2"></i>
+                            <div class="flex-grow-1 text-truncate">
+                                <p class="text-dark mb-0 fw-semibold fs-13">Total Trx Gagal</p>
+                                <h3 class="mt-1 mb-0 fs-18 fw-bold">190 <span class="fs-11 text-muted fw-normal">Order 365
+                                        Days</span> </h3>
+                            </div><!--end media body-->
+                        </div>
+                    </div><!--end card-body-->
+                </div> <!--end card-body-->
+            </div><!--end col-->
+
+            <div class="col-md-4 col-lg-2">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center">
+                            <i class="iconoir-dollar-circle fs-24 align-self-center text-info me-2"></i>
+                            <div class="flex-grow-1 text-truncate">
+                                <p class="text-dark mb-0 fw-semibold fs-13">Nominal Trx Sukses</p>
+                                <h3 class="mt-1 mb-0 fs-18 fw-bold">165 <span class="fs-11 text-muted fw-normal">Comp. Order
+                                        365 Days</span> </h3>
+                            </div><!--end media body-->
+                        </div>
+                    </div><!--end card-body-->
+                </div> <!--end card-->
+            </div><!--end col-->
+
+            <div class="col-md-4 col-lg-2">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center">
+                            <i class="iconoir-xmark-circle fs-24 align-self-center text-danger me-2"></i>
+                            <div class="flex-grow-1 text-truncate">
+                                <p class="text-dark mb-0 fw-semibold fs-13">Cancled</p>
+                                <h3 class="mt-1 mb-0 fs-18 fw-bold">25 <span class="fs-11 text-muted fw-normal">Canc.Order
+                                        365 Days</span> </h3>
+                            </div><!--end media body-->
+                        </div>
+                    </div><!--end card-body-->
+                </div> <!--end card-body-->
+            </div><!--end col-->
+
+            <div class="col-md-4 col-lg-2">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center">
+                            <i class="iconoir-xmark-circle fs-24 align-self-center text-danger me-2"></i>
+                            <div class="flex-grow-1 text-truncate">
+                                <p class="text-dark mb-0 fw-semibold fs-13">Cancled</p>
+                                <h3 class="mt-1 mb-0 fs-18 fw-bold">25 <span class="fs-11 text-muted fw-normal">Canc.Order
+                                        365 Days</span> </h3>
+                            </div><!--end media body-->
+                        </div>
+                    </div><!--end card-body-->
+                </div> <!--end card-body-->
+            </div><!--end col-->
+
+            <div class="col-md-4 col-lg-2">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center">
+                            <i class="iconoir-xmark-circle fs-24 align-self-center text-danger me-2"></i>
+                            <div class="flex-grow-1 text-truncate">
+                                <p class="text-dark mb-0 fw-semibold fs-13">Cancled</p>
+                                <h3 class="mt-1 mb-0 fs-18 fw-bold">25 <span class="fs-11 text-muted fw-normal">Canc.Order
+                                        365 Days</span> </h3>
+                            </div><!--end media body-->
+                        </div>
+                    </div><!--end card-body-->
+                </div> <!--end card-body-->
+            </div><!--end col-->
+
+        </div>
+
         <div class="row justify-content-center">
             <div class="col-12">
                 <div class="card">
@@ -41,12 +136,12 @@
                             <table class="table datatable table-hover" id="datatable_1">
                                 <thead class="">
                                     <tr>
-                                        <th>#</th>
                                         <th>Kode</th>
                                         <th>Nama</th>
                                         <th>Saldo</th>
                                         <th>Limit Saldo</th>
-                                        <th>Kode Level</th>
+                                        <th>Level</th>
+                                        <th>Status</th>
                                         <th>Kode Upline</th>
                                         <th>Aksi</th>
                                     </tr>
@@ -54,18 +149,24 @@
                                 <tbody>
                                     @forelse($resellers as $reseller)
                                         <tr>
-                                            <td>{{ $loop->iteration }}</td>
                                             <td>{{ $reseller->kode }}</td>
                                             <td>{{ $reseller->nama }}</td>
                                             <td>{{ number_format($reseller->saldo, 0, ',', '.') }}</td>
                                             <td>{{ number_format($reseller->saldo_minimal, 0, ',', '.') }}</td>
                                             <td>{{ $reseller->nama_level ?? '-' }}</td>
+                                            <td><span
+                                                    class="badge bg-transparent border {{ $reseller->aktif ? 'border-success text-success' : 'border-danger text-danger' }}">
+                                                    {{ $reseller->aktif ? 'Aktif' : 'Tidak Aktif' }}
+                                                </span></td>
                                             <td>{{ $reseller->kode_upline }}</td>
-                                            <td>Aksi</td>
+                                            <td>
+                                                <a href="{{ route('reseller.show', $reseller->kode) }}"
+                                                    class="btn btn-primary btn-sm">Detail</a>
+                                            </td>
                                         </tr>
                                     @empty
                                         <tr>
-                                            <td colspan="6" class="text-center">Tidak ada downline ditemukan.</td>
+                                            <td colspan="8" class="text-center">Reseller Tidak ditemukan.</td>
                                         </tr>
                                     @endforelse
                                 </tbody>
@@ -82,4 +183,3 @@
 @section('footer')
     @include('footer')
 @endsection
-
